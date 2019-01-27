@@ -1,0 +1,175 @@
+<?php 
+
+//require_once(dirname(__FILE__).'/../config.php');
+require_once(dirname(__FILE__).'/class.db.php');
+
+
+class datamanager extends database{
+	
+		
+		
+	public static function get_lastid(){
+		$db= new database();			
+		return $db->lastInsertId();		
+		}
+	
+			//populates persons data
+	public static function get_entity_data($id,$table){
+		$db= new database();
+		$param=array('id'=>$id)	;				
+		return $db->get_row("all",$param,$table);			
+		}
+	
+	
+	public static function save($data,$table,$condition=""){
+		$db= new database();
+				
+		if(empty($condition)){
+			$id= $data['id'];
+			$condition=array('id'=>$id);
+			}
+		if($db->countrow($condition, $table) > '0'){	
+		return	$db->update($data,$condition,$table);	
+		}else{			
+		return	$db->insert($data,$table);					
+			}	
+		}
+		
+		
+	public static function count_data($table="client"){
+		$db= new database;
+		
+		return $db->countrow(NULL,$table);
+		
+		}		
+		
+		
+	public static function get_all($order_by="date",$serial="desc"){
+		$db= new database;
+		$table="client";
+		$sql="SELECT * FROM ".$table."  ORDER by    `".$order_by."` ".$serial."";		
+		return $db->query($sql);
+		
+		}	
+		
+	public static function get_row_by_limit($group_number="0",$items_per_group="15",$order_by="date",$serial="desc"){
+		$db= new database;
+		$table="client";
+		$position = ($group_number * $items_per_group);
+		$sql="SELECT * FROM  ".$table."   ORDER by `".$order_by."` ".$serial."  LIMIT ".$position.",".$items_per_group."";		
+		return $db->query($sql);
+		
+		}		
+	
+	public static function get_row_data($id){
+		$db= new database;
+		$table="client";	
+		$param=array('id'=>$id)	;				
+		return $db->get_row("all",$param,$table);		
+		}		
+		
+	public static function search($s){
+			$db= new database;			
+			$table="client";
+			$range=array('id','fname','lname','email','doc_to_visit','city');
+		return	$db->search_data($s,$table,$range);		
+		}	
+		
+	public static function check_login($username,$pwd,$type=NULL){
+			$password_hash="";			
+			$db= new database();			
+		
+	if($type== 'admin') {					
+		$query=" SELECT * FROM admin WHERE  email=:email ";		
+		$params=array('email'=>$username);
+		
+		$results=$db->query($query,$params);
+		
+		foreach( $results as $row ){ 
+   		 $password_hash = $row[ 'pwd' ];
+    				}
+				
+				if ( $password_hash==$pwd ){
+  		 			return true;
+				}		 else {
+   				return FALSE;
+				}
+			}elseif($type=='dealer') {
+				
+				$query=" SELECT * FROM dealer WHERE  email=:email ";		
+		$params=array('email'=>$username);
+		
+		$results=$db->query($query,$params);
+		
+		foreach( $results as $row ){ 
+   		 $password_hash = $row[ 'pwd' ];
+    				}
+				
+				if ( $password_hash==$pwd ){
+  		 			return true;
+				}		 else {
+   				return FALSE;
+				}
+			
+			}else {
+				
+				$query=" SELECT * FROM salesman WHERE  email=:email ";		
+		$params=array('email'=>$username);
+		
+		$results=$db->query($query,$params);
+		
+		foreach( $results as $row ){ 
+   		 $password_hash = $row[ 'pwd' ];
+    				}
+				
+				if ( $password_hash==$pwd ){
+  		 			return true;
+				}		 else {
+   				return FALSE;
+				}			
+			
+			}
+			
+		}		
+		
+		
+		
+		
+		
+	public static function get_id($extended_id_value, $extended_id=FALSE){	
+	
+	$db= new database;
+	if($extended_id == TRUE){
+	$id=$extended_id_value.rand("1000", "999999");	
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=$extended_id_value.rand("1001", "100000");	
+	}
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=$extended_id_value.rand("1111", "999999");	
+	}
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=$extended_id_value.rand("2222", "899999");	
+	}
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=$extended_id_value.rand("10001", "1999999");	
+	}
+	}else{
+		$id=rand("1000", "999999");
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=$id+1;	
+	}
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=$id+1;	
+	}
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=rand("10000", "8888888");	
+	}
+	if($db->countrow(array("id"=>"$id"), "client") > '0'){
+	$id=$id+1;	
+	}
+		}
+	return 	$id;		
+		
+		}	
+	
+	}//class ends

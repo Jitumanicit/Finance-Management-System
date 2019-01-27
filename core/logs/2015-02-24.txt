@@ -1,0 +1,11 @@
+Time : 10:58:01
+SQLSTATE[HY000] [1049] Unknown database 'finance'
+
+Time : 10:57:31
+SQLSTATE[HY000] [1049] Unknown database 'finance'
+
+Time : 10:57:27
+SQLSTATE[HY000] [1049] Unknown database 'finance'
+
+Time : 10:57:18
+SQLSTATE[HY000] [1049] Unknown database 'finance'

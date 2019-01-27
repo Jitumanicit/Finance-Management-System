@@ -1,0 +1,124 @@
+<?php
+
+  require_once('class.PropertyObject.php');
+  require_once('class.PhoneNumber.php');
+  require_once('class.Address.php');
+  require_once('class.EmailAddress.php');
+
+  abstract class person extends PropertyObject {
+ 
+   private $name;
+	private $address;
+	private $phone;
+	private $email;
+	private $gender;
+	private $dob;
+	private $blood_group;
+	private $maritial;	
+	private $sex;
+   
+    public function __construct($entityID) {
+      $arData = DataManager::getEntityData($entityID);
+     
+      parent::__construct($arData);
+  
+      $this->propertyTable['id'] = 'id';
+      $this->propertyTable['name'] = 'name';
+      $this->propertyTable['address'] = 'address';
+      $this->propertyTable['phone'] = 'phone';
+      $this->propertyTable['email'] = 'email';
+      $this->propertyTable['gender'] = 'gender';
+      $this->propertyTable['dob'] = 'dob';
+      $this->propertyTable['birthdate'] = 'dob';
+      $this->propertyTable['blood_group'] = 'blood_group';
+      $this->propertyTable['bloodgroup'] = 'blood_group';
+      $this->propertyTable['maritial'] = 'maritial';
+      $this->propertyTable['maritial_status'] = 'maritial';
+      $this->propertyTable['sex'] = 'sex';         
+       
+    }
+     
+    function setID($val) {
+      throw new Exception('You may not alter the value of the ID field!');
+    }
+
+    function setEntityID($val) {
+      $this->setID($val);
+    }
+    
+    function set_name($val) {
+      $this->name =$val;
+    }
+    
+    function set_address($val) {
+      $this->address =$val;
+    }
+    
+    function set_phone($val) {
+      $this->phone =$val;
+    }
+    
+    function set_email($val) {
+      $this->email =$val;
+    }
+    
+    function set_dob($val) {
+      $this->dob =$val;
+    }
+    
+    function set_blood_group($val) {
+      $this->blood_group =$val;
+    }
+    
+    function set_maritial_status($val) {
+      $this->maritial =$val;
+    }
+    
+    function set_sex($val) {
+      $this->sex =$val;
+    }
+    
+    
+    
+    function get_name($val) {
+   	return   $this->name($val);
+    }
+    
+    function get_address($val) {
+     return   $this->address;
+    }
+    
+    function get_phone($val) {
+     return   $this->phone;
+    }
+    
+    function get_email($val) {
+      return  $this->email;
+    }
+    
+    function get_dob($val) {
+     return   $this->dob;
+    }
+    
+    function get_blood_group($val) {
+     return   $this->blood_group;
+    }
+    
+    function get_maritial_status($val) {
+     return   $this->maritial;
+    }
+    
+    function get_sex($val) {
+     return   $this->sex;
+    }
+    
+	
+     
+    
+
+    public function validate() {
+      //Add common validation routines     
+    }
+
+  }
+?>

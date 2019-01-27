@@ -1,0 +1,72 @@
+<?php
+
+  require_once('class.PropertyObject.php');
+  require_once('class.datamanager.php');
+
+	abstract  class person extends PropertyObject {
+ 
+   private $name;
+	private $address;
+	private $phone;
+	private $email;	
+	private $dob;
+	private $blood_group;
+	private $maritial;	
+	private $sex;
+	
+	protected $table="";
+	   
+    public function __construct($entityID= NULL) {
+    	if($entityID) {
+       $ardata = datamanager::get_entity_data($entityID,"person");   
+		if(!$ardata) {
+			throw new Exception("Invalid Id \"$entityID\"!");
+		}        
+             
+      parent::__construct($ardata);
+        }
+        
+      $this->propertyTable['id'] = 'id';
+      $this->propertyTable['person_id'] = 'id';
+      $this->propertyTable['name'] = 'name';
+      $this->propertyTable['firstname'] = 'name';
+      $this->propertyTable['address'] = 'address';
+      $this->propertyTable['phone'] = 'phone';
+      $this->propertyTable['email'] = 'email';      
+      $this->propertyTable['dob'] = 'dob';
+      $this->propertyTable['birthdate'] = 'dob';      
+      $this->propertyTable['maritial'] = 'maritial';
+      $this->propertyTable['maritial_status'] = 'maritial';
+      $this->propertyTable['sex'] = 'sex';    
+      $this->propertyTable['gender'] = 'sex';     
+     		
+    }
+     
+    function set_id($val) {
+			echo ('You may not alter the value of the ID field!');
+    }
+
+    function set_person_id($val) {
+      $this->set_id($val);
+    }
+  
+    function save(){    		
+    	return datamanager::save($this->data,$this->table);     
+    }   
+    
+   
+	
+     
+    
+
+    public function validate() {
+      //Add common validation routines  
+     
+    }
+    
+     public function details($val) {
+     	var_dump($this->data);
+    }
+
+  }
+?>

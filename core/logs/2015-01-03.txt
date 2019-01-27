@@ -1,0 +1,20 @@
+Time : 11:26:31
+SQLSTATE[HY000] [1045] Access denied for user 'finance'@'localhost' (using password: YES)
+
+Time : 11:20:33
+SQLSTATE[HY000] [1045] Access denied for user 'manish'@'localhost' (using password: YES)
+
+Time : 11:19:53
+SQLSTATE[HY000] [1045] Access denied for user 'new'@'localhost' (using password: YES)
+
+Time : 11:19:03
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+
+Time : 11:12:28
+SQLSTATE[HY000] [1045] Access denied for user 'finance'@'localhost' (using password: YES)
+
+Time : 11:10:32
+SQLSTATE[HY000] [1045] Access denied for user 'finance'@'localhost' (using password: YES)
+
+Time : 11:02:37
+SQLSTATE[HY000] [1045] Access denied for user 'finance'@'localhost' (using password: YES)

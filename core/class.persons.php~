@@ -1,0 +1,35 @@
+<?php
+include_once("datamanager.class.php");
+
+class person{
+	
+	private $fname;
+	private $lname;
+	private $address;
+	private $phone;
+	private $gender;
+	private $age;
+	private $blood_group;
+	private $maritial;	
+	private $email;
+
+function __construct($fname,$lname,$address,$phone,$gender,$age,$blood_group,$maritial,$email){
+	
+	
+	}
+
+public function set_name(){	
+	$this->fname=$fname;
+	$this->lname=$lname;	
+	}
+public function set_address(){	
+	$this->address=$address;
+		}	
+	
+public function set_phone(){	
+	$this->address=$address;
+		}	
+				
+	
+	}
+//end of class

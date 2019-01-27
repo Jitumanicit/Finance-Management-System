@@ -1,0 +1,45 @@
+<?php
+  require_once('class.person.php');
+   
+  class salesman extends person {
+		
+		private $id;	
+		private $dealer_id;  
+		
+		
+		   
+    public function __construct($userID=NULL) {      	
+    	
+    	$this->table="salesman";
+      parent::__construct($userID);
+     
+      //$this->data = array_merge( $this->data, $ardata);
+     
+      $this->propertyTable['dealer_id'] = 'dealer_id';
+      $this->propertyTable['d_id'] = 'dealer_id';
+
+    }
+    
+    public function get_id() {
+      return $this->id ;
+    }
+    
+   
+
+    public function __toString() {
+      return $this->firstname ;
+    }
+   
+    public function save(){    
+    		return parent::save();       	
+    }   
+   
+    public function validate() {
+      parent::validate();
+
+      //add individual-specific validation
+     
+    }
+ 
+  }
+?>
