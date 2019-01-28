@@ -1,0 +1,2 @@
+# Finance
+Finance Management System	is a complete web based application which maintain finance related activity like car loan, bike loan etc. This system having the facility of auto calculation which calculate EMI, penalty lapses etc. It also contain overall office related work like remuneration, monthly office expencess, office rent, staff salary etc. Including all of this it shows overall profit or loss in each of every month. Inn this system having 3 login system one is for admin and another two are accounts depertment and office staff. 
